@@ -1,25 +1,15 @@
-import PostSkeleton from "../components/PostSkeleton";
 import Posts from "../containers/Posts";
+import Layout from "../containers/Layout";
 interface HomeProps {
     
 }
-
-{/* <PostSkeleton id={"eokvnwe"} height={63} width={234} title={"test"} votes={424} comment_count={52} views={85} animated ={false} imageId={"sdfgb"} count={516}></PostSkeleton>  */}
  
 const Home: React.FC<HomeProps> = () => {
-    //   id,
-//   height,
-//   width,
-//   title,
-//   votes,
-//   comment_count,
-//   views,
-//   animated,
-//   imageId,
-//   count
-
-// 
-    return (<PostSkeleton id={"eokvnwe"} height={63} width={234} title={"test"} votes={424} comment_count={52} views={85} animated ={false} imageId={"sdfgb"} count={516}></PostSkeleton>  );
+    return (
+        <Layout>
+            <Posts apiEndpoint="https://api.npoint.io/bc13239283496e6574a7"/>
+        </Layout>
+    );
 }
  
 export default Home;
