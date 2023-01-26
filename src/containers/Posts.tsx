@@ -1,30 +1,14 @@
 import { useEffect, useState } from "react";
-import { addGalleryImages } from "../addGalleryImages";
 import PostSkeleton from "../components/PostSkeleton";
-
+import IPost from "../interfaces/IPost";
 interface PostsProps {
     apiEndpoint: string
 }
 
-interface IPost {
-  id:string,
-  images: {
-    height: number, 
-    width: number,
-    animated: boolean,
-    id: string
-  }[],
-   title: string, 
-   ups: number, 
-   comment_count: number,
-    views:number,
-}
 
 const Posts: React.FC<PostsProps> = ({apiEndpoint}) => {
 
-  const [postsData, setPostsData] = useState<IPost[]>(
-    
-  );
+  const [postsData, setPostsData] = useState<IPost[]>();
 
   const [postsSkeletons, setPostsSkeletons] = useState<JSX.Element[]>();
 
