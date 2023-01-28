@@ -9,7 +9,6 @@ interface PostsProps {
 const Posts: React.FC<PostsProps> = ({apiEndpoint}) => {
 
   const [postsData, setPostsData] = useState<IPost[]>();
-
   const [postsSkeletons, setPostsSkeletons] = useState<JSX.Element[]>();
 
   useEffect(() => {   
@@ -17,10 +16,9 @@ const Posts: React.FC<PostsProps> = ({apiEndpoint}) => {
      .then(res => res.json())
      .then(json => json.data)
      .then(data => {
-      console.log(data)
       setPostsData(data)
      })
-    }, [])
+    },[apiEndpoint])
 
     useEffect(()=> {
       if(postsData){
@@ -28,7 +26,8 @@ const Posts: React.FC<PostsProps> = ({apiEndpoint}) => {
          {
           if(data.images){
              return  (  
-          <PostSkeleton            
+          <PostSkeleton   
+           key={data.id}         
            id={data.id}
            height={data.images[0].height}
            width = {data.images[0].width}
@@ -41,9 +40,10 @@ const Posts: React.FC<PostsProps> = ({apiEndpoint}) => {
            count={1} />)}
   
            return(
-             <PostSkeleton            
+             <PostSkeleton 
+             key={data.id}           
               id={data.id}
-              height={60}
+              height={1360}
               width = {90}
               title = {data.title}
               votes = {data.ups}
@@ -63,7 +63,7 @@ const Posts: React.FC<PostsProps> = ({apiEndpoint}) => {
     
     return ( 
         <div
-        className="dense-grid gallery relative overflow-hidde"
+        className="dense-grid gallery relative overflow-hidden"
         id="posts-container"
       >{postsSkeletons}</div>
     );

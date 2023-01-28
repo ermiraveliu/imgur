@@ -94,3 +94,9 @@
     grid-row: span var(--span);
   }
 }
+
+.gradient-background {
+  background: linear-gradient(180deg, rgba(37, 38, 41, 0.24) 26.22%, #27292d),
+    linear-gradient(0deg, #171544, #171544);
+  /* height: 650px; */
+}

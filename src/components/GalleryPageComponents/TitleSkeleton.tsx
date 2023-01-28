@@ -1,22 +1,18 @@
-import { useContext } from "react";
-import { PostContext } from "../../context/PostContext";
-import NextButton from "./NextButton";
-
-interface TitleProps {
-    prevPostId: string,
-    nextPostId: string
+interface TitleSkeletonProps {
+    
 }
  
-
-const Title: React.FC<TitleProps> = ({ prevPostId, nextPostId}) => {
-
-  const {post} = useContext(PostContext);
+const TitleSkeleton: React.FC<TitleSkeletonProps> = () => {
     return ( 
         <div className="hidden sm:block">
         <div className="post-title flex items-start justify-between gap-4">
-          <div className="text-white w-full text-2xl lg:text-3xl mb-3 font-bold title">{post.title}
+          <div className="text-white w-full text-2xl lg:text-3xl mb-3 font-bold title">
+            <div className="w-2/3 bg-[rgba(0,0,0,.3)] h-8 animate-pulse"></div>
           </div>
-          <NextButton prevPostId={prevPostId} nextPostId={nextPostId}/>
+          <div className="flex items-center  justify-center text-white">
+            <div className="w-10 h-9 p-0.5 flex justify-center items-center bg-gray-500 rounded-l previous-btn" id="previous-btn"><img src="../assets/previousPost.svg" alt=""></img></div>
+            <div className="bg-blue h-9 w-10 p-1 xl:w-20 rounded-r text-sm font-semibold tracking-wide flex items-center justify-center gap-1 shrink-0 next-btn" id="next-btn"><span className="hidden xl:block">Next</span> <img src="../assets/nextPost.svg" alt=""/></div>
+          </div>
         </div>
           <div className="flex gap-2 w-full mb-5">
             <img className="img w-8 h-8 rounded-full bg-lighterGreen animate-pulse hover:scale-110 avatar" alt=""/>
@@ -40,7 +36,7 @@ const Title: React.FC<TitleProps> = ({ prevPostId, nextPostId}) => {
             </div>
           </div>
         </div>
-     );
+     );;
 }
  
-export default Title;
+export default TitleSkeleton;
