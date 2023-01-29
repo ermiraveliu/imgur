@@ -1,5 +1,4 @@
 import PostSkeleton from "./components/PostSkeleton";
-
 const addPosts = (dataArray:IPost[], infinite:boolean) => {
     let limitedDataArray = dataArray.slice(0, 30);
     let postsLoadedCount = 30;

@@ -4,7 +4,7 @@ interface LayoutProps {
  
 const Layout: React.FC<LayoutProps> = ({children}) => {
     return ( 
-        <div className="bg-gray-900">
+        <div className="bg-gray-900" id="top">
         {children}
         <footer></footer>
         </div>

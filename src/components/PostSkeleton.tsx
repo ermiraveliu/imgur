@@ -51,7 +51,7 @@ const PostSkeleton: React.FC<PostSkeletonProps> = ({  id,
     //Randomly generate a number in range [1,6]
     let gradientStartColor = Math.floor(Math.random() * 6) + 1;
     return (
-        <Link to={`/gallery/${id}`} style={{gridRow: `span ${postHeight}`}}>
+        <Link to={`/gallery/${id}`} onClick= {() =>  window.scrollTo(0, 0)} style={{gridRow: `span ${postHeight}`}}>
           <div className={`post ${titleLength}  text-white rounded-sm overflow-hidden sm:w-[300px] relative image-container `} data-count= {count} id= {id}>  
             <div className={`sm:w-[300px] bg-gradient-to-b from-tagColor-${gradientStartColor} to-gray-800`} data-animated={animated} data-height={height} data-width={width} data-imageid = {imageId} data-objectFit = {objectFit}  style={ {height : `${imageHeight}px`}} ></div>
             <PostDescription title={title} votes={votes} comment_count={comment_count} views={views}/>

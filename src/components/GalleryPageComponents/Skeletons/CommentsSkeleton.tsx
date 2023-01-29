@@ -1,13 +1,9 @@
-import { useContext } from "react";
-import { PostContext } from "../../context/PostContext";
-
-interface CommentsProps {
+interface CommentsSkeletonProps {
     
 }
  
-const Comments: React.FC<CommentsProps> = () => {
+const CommentsSkeleton: React.FC<CommentsSkeletonProps> = () => {
 
-  const {post} = useContext(PostContext);
     return ( 
         <>
          <div 
@@ -31,9 +27,12 @@ const Comments: React.FC<CommentsProps> = () => {
          <div className="comments hidden sm:block">
             <div className="flex justify-between">
             <div className="text-white flex gap-2 text-base font-medium uppercase">
-              <div className="comment-count" >{post.comment_count}
+              <div className="comment-count" >
+                <div className="w-8 h-3 bg-[rgba(0,0,0,.1)] animate-pulse"></div>
               </div>
               comments</div>
+
+ 
               <div className="flex gap-3 font-medium" >
                 <div className="flex gap-1 cursor-pointer text-gray-100 hover:text-white expandAll" ><span>Expand All</span><img src="../assets/expand.svg" alt=""/></div>
                 <div className="gap-1 cursor-pointer text-gray-100 hover:text-white hidden" id="collapse-all"><span>Collapse All</span><img src="../assets/collapse.svg" alt=""/></div>
@@ -62,4 +61,4 @@ const Comments: React.FC<CommentsProps> = () => {
      );
 }
  
-export default Comments;
+export default CommentsSkeleton;
