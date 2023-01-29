@@ -2,14 +2,15 @@ import TitleSkeleton from "./TitleSkeleton";
 import Image from "../Image";
 import Comments from "../Comments";
 import { useState, useContext, useEffect } from "react";
-import { PostContext } from "../../../context/PostContext";
-import IPost, { IPostDefault } from "../../../interfaces/IPost";
+import { PostContext } from "../../../context/PostContext"
+import { IExpandedPost, IPostDefault } from "../../../interfaces/IExpandedPost";
 import { useParams } from "react-router-dom";
 import Title from "../Title";
 import ImageSkeleton from "./ImageSkeleton";
 import EngagementBarSkeleton from "./EngagementBarSkeleton";
 import EngagementBar from "../EngagementBar";
 import CommentsSkeleton from "./CommentsSkeleton";
+import IPost from "../../../interfaces/IPost";
 
 interface ContentContainerProps {
 }
@@ -26,7 +27,7 @@ const ContentContainer: React.FC<ContentContainerProps> = () => {
         const response = await fetch("https://api.npoint.io/bc13239283496e6574a7");
         const responseJson = await response.json();
         const data = responseJson.data;
-        let post: IPost = IPostDefault;
+        let post: IPost|IExpandedPost = IPostDefault;
         let prevId: null|string = null;
         let nextId : null|string = null;
         for (let i = 0; i < data.length; i++) {

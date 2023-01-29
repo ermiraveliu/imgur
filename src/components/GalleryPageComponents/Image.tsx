@@ -1,16 +1,18 @@
 import { useContext } from "react";
 import { PostContext } from "../../context/PostContext";
+import IPost, {instanceOfIPost} from "../../interfaces/IPost";
 
 interface ImageProps {
     
 }
- 
+
 const Image: React.FC<ImageProps> = () => {
 
     const {post} = useContext(PostContext);
     let image;
     let description : null|string = null;
-    if(post.images){
+
+    if(instanceOfIPost(post)){
         description = post.images[0].description;
         if(!post.images[0].animated){
         console.log("image")
@@ -20,6 +22,19 @@ const Image: React.FC<ImageProps> = () => {
           image = (
           <video className="mx-auto max-h-[80vh]" autoPlay loop muted controls>
           <source src={post.images[0].link} type="video/mp4" />
+          </video>
+          )
+       }
+    } else {
+        description = post.description;
+        if(!post.animated){
+        console.log("image")
+          image =( <img src={post.link} className="mx-auto" alt=""/>)
+       } else {
+        console.log("video")
+          image = (
+          <video className="mx-auto max-h-[80vh]" autoPlay loop muted controls>
+          <source src={post.link} type="video/mp4" />
           </video>
           )
        }

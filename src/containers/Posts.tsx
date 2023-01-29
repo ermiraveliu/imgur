@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import PostSkeleton from "../components/PostSkeleton";
+import { IExpandedPost } from "../interfaces/IExpandedPost";
 import IPost from "../interfaces/IPost";
 interface PostsProps {
     apiEndpoint: string
@@ -8,7 +9,7 @@ interface PostsProps {
 
 const Posts: React.FC<PostsProps> = ({apiEndpoint}) => {
 
-  const [postsData, setPostsData] = useState<IPost[]>();
+  const [postsData, setPostsData] = useState<(IPost|IExpandedPost)[]>();
   const [postsSkeletons, setPostsSkeletons] = useState<JSX.Element[]>();
 
   useEffect(() => {   
@@ -24,35 +25,12 @@ const Posts: React.FC<PostsProps> = ({apiEndpoint}) => {
       if(postsData){
         const PostSkeletons = postsData.map(data => 
          {
-          if(data.images){
              return  (  
           <PostSkeleton   
            key={data.id}         
-           id={data.id}
-           height={data.images[0].height}
-           width = {data.images[0].width}
-           title = {data.title}
-           votes = {data.ups}
-           comment_count = {data.comment_count}
-           views = {data.views}
-           animated = {data.images[0].animated}
-           imageId={data.images[0].id}
-           count={1} />)}
-  
-           return(
-             <PostSkeleton 
-             key={data.id}           
-              id={data.id}
-              height={1360}
-              width = {90}
-              title = {data.title}
-              votes = {data.ups}
-              comment_count = {data.comment_count}
-              views = {data.views}
-              animated = {false}
-              imageId={"diWC0mU"}
-              count={1} />
-           )
+           post = {data}/>
+             )
+          
           }
          
          );

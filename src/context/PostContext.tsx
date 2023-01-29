@@ -1,9 +1,10 @@
 import { createContext, useState } from "react";
-import IPost, {IPostDefault} from "../interfaces/IPost";
+import IPost from "../interfaces/IPost";
+import { IExpandedPost, IPostDefault,  } from "../interfaces/IExpandedPost";
 
 interface PostContextProps {
-    post: IPost,
-    setPost: (post: IPost) => void  
+    post: IPost| IExpandedPost,
+    setPost: (post: IExpandedPost|IPost) => void  
  }
 
 export const PostContext = createContext<PostContextProps>({post:IPostDefault, setPost: (post) => {}});
@@ -13,7 +14,7 @@ interface PostContextProviderProps {
 }
  
 export const PostContextProvider: React.FC<PostContextProviderProps> = ({children}) => {
-    const [post, setPost] = useState<IPost>(IPostDefault);
+    const [post, setPost] = useState<IExpandedPost|IPost>(IPostDefault);
     return ( 
         <PostContext.Provider value = {{post, setPost}}>
             {children}
