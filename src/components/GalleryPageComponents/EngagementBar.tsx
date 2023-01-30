@@ -27,7 +27,6 @@ const EngagementBar: React.FC<EngagementBarProps> = () => {
       }
       console.log(upvoteBannerDisplay)
   }
-
   const downvoteButtonClicked = () => {
     if(downvoteBannerDisplay === "hidden"){
       setDownvoteBannerDisplay("block")
