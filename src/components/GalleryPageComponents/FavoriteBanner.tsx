@@ -1,10 +1,15 @@
+import { useContext } from "react";
+import { PostContext } from "../../context/PostContext";
+
 interface FavoriteBannerProps {
-    display: string
 }
  
-const FavoriteBanner: React.FC<FavoriteBannerProps> = ({display}) => {
+const FavoriteBanner: React.FC<FavoriteBannerProps> = () => {
+    
+    const {favoriteBannerDisplay} = useContext(PostContext);  
+
     return ( 
-        <div className={`absolute w-[400px] h-44 left-[55px] top-16 hidde pl-32  py-4 transition-all ${display}`} id="favorite-banner">
+        <div className={`absolute w-[400px] h-44 left-[55px] top-16 hidde pl-32  py-4 transition-all ${favoriteBannerDisplay}`} id="favorite-banner">
         <p className="text-lg font-bold">Fave and Never Forget</p>
         <p className="text-sm pt-2 pr-20">Sign up to save your favorite posts to your profile.</p>
         <div className="flex pt-4 font-bold gap-4">

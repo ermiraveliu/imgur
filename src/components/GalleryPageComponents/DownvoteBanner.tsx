@@ -1,10 +1,13 @@
+import { useContext } from "react";
+import { PostContext } from "../../context/PostContext";
+
 interface DownvoteBannerProps {
-    display: string
 }
  
-const DownvoteBanner: React.FC<DownvoteBannerProps> = ({display}) => {
+const DownvoteBanner: React.FC<DownvoteBannerProps> = () => {
+    const {downvoteBannerDisplay} =useContext(PostContext);
     return ( 
-        <div className={`absolute w-[400px] h-44 left-[55px] top-4 hidde pl-32 pr-20 py-4 ${display} transition-all`} id="downvote-banner">
+        <div className={`absolute w-[400px] h-44 left-[55px] top-4 hidde pl-32 pr-20 py-4 ${downvoteBannerDisplay} transition-all`} id="downvote-banner">
         <p className="text-lg font-bold">Beg to differ?</p>
         <p className="text-sm pt-2">Sign up to downvote the posts that rub you the wrong way.</p>
         <div className="flex pt-4 font-bold gap-4">

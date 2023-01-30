@@ -1,10 +1,14 @@
+import { useContext } from "react";
+import { PostContext } from "../../context/PostContext";
+
 interface UpvoteBannerProps {
-    display: string;    
 }
  
-const UpvoteBanner: React.FC<UpvoteBannerProps> = ({display}) => {
+const UpvoteBanner: React.FC<UpvoteBannerProps> = () => {
+
+    const {upvoteBannerDisplay} = useContext(PostContext);
     return ( 
-        <div className={`absolute w-[400px] h-44 left-[55px] -top-16 pl-32 pr-20 py-4 transition-all ${display}`} id="upvote-banner">
+        <div className={`absolute w-[400px] h-44 left-[55px] -top-16 pl-32 pr-20 py-4 transition-all ${upvoteBannerDisplay}`} id="upvote-banner">
         <p className="text-lg font-bold">Up and away!</p>
         <p className="text-sm pt-2">Sign up to upvote the posts you like and make them more popular.</p>
         <div className="flex pt-4 font-bold gap-4">

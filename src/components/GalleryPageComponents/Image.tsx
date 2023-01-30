@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { PostContext } from "../../context/PostContext";
-import IPost, {instanceOfIPost} from "../../interfaces/IPost";
+import {instanceOfIPost} from "../../interfaces/IPost";
 
 interface ImageProps {
     
@@ -18,7 +18,6 @@ const Image: React.FC<ImageProps> = () => {
         console.log("image")
           image =( <img src={post.images[0].link} className="mx-auto" alt=""/>)
        } else {
-        console.log("video")
           image = (
           <video className="mx-auto max-h-[80vh]" autoPlay loop muted controls>
           <source src={post.images[0].link} type="video/mp4" />
@@ -31,7 +30,6 @@ const Image: React.FC<ImageProps> = () => {
         console.log("image")
           image =( <img src={post.link} className="mx-auto" alt=""/>)
        } else {
-        console.log("video")
           image = (
           <video className="mx-auto max-h-[80vh]" autoPlay loop muted controls>
           <source src={post.link} type="video/mp4" />
