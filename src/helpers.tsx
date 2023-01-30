@@ -2,7 +2,7 @@ import { IExpandedPost } from "./interfaces/IExpandedPost";
 import IPost, { instanceOfIPost } from "./interfaces/IPost";
 
 export const titleCalculations = (post:IPost|IExpandedPost) => {
-    let titleLength, postHeight, aspectRatio = 0, title = post.title  ;
+    let titleLength, postHeight, aspectRatio, title = post.title;
     if(instanceOfIPost(post)){
       aspectRatio = post.images[0].height / post.images[0].width;
       postHeight = Math.floor((300 * aspectRatio) / 5);
@@ -28,7 +28,7 @@ export const titleCalculations = (post:IPost|IExpandedPost) => {
 
 export const imageCalculations = (post: IPost|IExpandedPost) => {
     const [titleLength, postHeight] = titleCalculations(post);
-    let aspectRatio = 0, link = post.link, height, width, imageId, animated,  imageHeight = Number(postHeight) * 5;;
+    let aspectRatio, link = post.link, height, width, imageId, animated,  imageHeight = Number(postHeight) * 5;;
     if(instanceOfIPost(post)){
         height = post.images[0].height;
         width = post.images[0].width;
@@ -45,4 +45,3 @@ export const imageCalculations = (post: IPost|IExpandedPost) => {
     let objectFit = aspectRatio < 1 ? "object-fill" : "object-cover";
     return [imageId, animated, height, width, objectFit, imageHeight, titleLength, postHeight ]
 }
-

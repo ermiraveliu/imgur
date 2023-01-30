@@ -5,10 +5,10 @@ import PostDescription from "./PostDescription";
 import PostImage from "./PostImage";
 import {titleCalculations } from "../helpers";
 
-interface PostSkeletonProps {    
+interface PostProps {    
   post: IPost | IExpandedPost  
 }
-const PostSkeleton: React.FC<PostSkeletonProps> = ({post}) => {
+const Post: React.FC<PostProps> = ({post}) => {
     
   let {title, ups, comment_count, views } = post
   const [titleLength, postHeight] = titleCalculations(post);
@@ -24,4 +24,4 @@ const PostSkeleton: React.FC<PostSkeletonProps> = ({post}) => {
     );
 }
  
-export default PostSkeleton;
+export default Post;

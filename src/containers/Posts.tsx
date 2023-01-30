@@ -1,16 +1,15 @@
 import { useEffect, useState } from "react";
-import PostSkeleton from "../components/PostSkeleton";
+import Post from "../components/Post";
 import { IExpandedPost } from "../interfaces/IExpandedPost";
 import IPost from "../interfaces/IPost";
 interface PostsProps {
-    apiEndpoint: string
+  apiEndpoint: string
 }
-
 
 const Posts: React.FC<PostsProps> = ({apiEndpoint}) => {
 
   const [postsData, setPostsData] = useState<(IPost|IExpandedPost)[]>();
-  const [postsSkeletons, setPostsSkeletons] = useState<JSX.Element[]>();
+  const [posts, setPosts] = useState<JSX.Element[]>();
 
   useEffect(() => {   
      fetch(apiEndpoint)
@@ -23,27 +22,17 @@ const Posts: React.FC<PostsProps> = ({apiEndpoint}) => {
 
     useEffect(()=> {
       if(postsData){
-        const PostSkeletons = postsData.map(data => 
-         {
-             return  (  
-          <PostSkeleton   
-           key={data.id}         
-           post = {data}/>
-             )
-          
-          }
-         
-         );
-         setPostsSkeletons(PostSkeletons);
+        const Posts = postsData.map(data => 
+        <Post key={data.id} post = {data}/>);
+         setPosts(Posts);
         } 
-
     }, [postsData])
     
     return ( 
         <div
-        className="dense-grid gallery relative overflow-hidden"
-        id="posts-container"
-      >{postsSkeletons}</div>
+          className="dense-grid gallery relative overflow-hidden"
+          id="posts-container"
+        >{posts}</div>
     );
 }
  
