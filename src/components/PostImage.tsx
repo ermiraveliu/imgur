@@ -12,12 +12,12 @@ interface PostImageProps {
 const PostImage: React.FC<PostImageProps> = ({post}) => {
 
    const {autoplay} = useContext(AutoplayContext);
-   let  [imageId, animated, height, width, objectFit, imageHeight] = imageCalculations(post);        
+   let  [imageId, animated, objectFit, imageHeight] = imageCalculations(post);        
    let gradientStartColor = Math.floor(Math.random() * 6) + 1;
    let Post;
 
     let imageSkeleton = (
-        <div className={`sm:w-[300px] bg-gradient-to-b from-tagColor-${gradientStartColor} to-gray-800`} data-animated={animated} data-height={height} data-width={width} data-imageid = {imageId} data-objectFit = {objectFit}  style={ {height : `${imageHeight}px`}} ></div>
+        <div className={`sm:w-[300px] bg-gradient-to-b ${objectFit} from-tagColor-${gradientStartColor} to-gray-800`} style={ {height : `${imageHeight}px`}} ></div>
     )
 
     const videoTag = animated ? (
@@ -27,7 +27,7 @@ const PostImage: React.FC<PostImageProps> = ({post}) => {
     let Image = (
       <>  
         <LazyLoadImage 
-        className={`sm:w-[300px]`}
+        className={`sm:w-[300px] ${objectFit}`}
         key={post.id}
         src={`${imageId}`}
         placeholder={imageSkeleton}
@@ -40,7 +40,7 @@ const PostImage: React.FC<PostImageProps> = ({post}) => {
         let Video = (
             <LazyLoadComponent
             placeholder={imageSkeleton}>
-            <video id="image" className={`image ${objectFit} w-full sm:w-[300px]`}  data-height={`${height}`} data-width={`${width}`} autoPlay loop muted>
+            <video id="image" className={`image ${objectFit} w-full sm:w-[300px]`}  autoPlay loop muted>
            <source src={`${videoLink}`} type="video/mp4"/>
            </video>
             </LazyLoadComponent>

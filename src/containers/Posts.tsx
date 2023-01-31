@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import Post from "../components/Post";
 import { AutoplayContext } from "../context/AutoplayContext";
+import { LayoutContext } from "../context/LayoutContext";
 import { IExpandedPost } from "../interfaces/IExpandedPost";
 import IPost from "../interfaces/IPost";
 interface PostsProps {
@@ -9,32 +10,28 @@ interface PostsProps {
 
 const Posts: React.FC<PostsProps> = ({apiEndpoint}) => {
   
-  const [postsData, setPostsData] = useState<(IPost|IExpandedPost)[]>();
   const [posts, setPosts] = useState<JSX.Element[]>();
   const {autoplay, setAutoplay} = useContext(AutoplayContext);
+  const {layout, setLayout} = useContext(LayoutContext);
 
-  useEffect(() => {   
-     fetch(apiEndpoint)
-     .then(res => res.json())
-     .then(json => json.data)
-     .then(data => {
-      setPostsData(data)
-     })
+  useEffect(() => {  
+     const getPosts = async () => {
+        const res = await  fetch(apiEndpoint);
+        const json = await res.json();
+        const data:(IPost|IExpandedPost)[] = json.data;
+        const Posts = data.map(post => 
+          <Post key={post.id} post = {post}/>);
+           setPosts(Posts);
+          }
+      getPosts();
     },[apiEndpoint])
-
-    useEffect(()=> {
-      if(postsData){
-        const Posts = postsData.map(data => 
-        <Post key={data.id} post = {data}/>);
-         setPosts(Posts);
-        } 
-    }, [postsData, autoplay])
 
     return ( 
       <>
-        <button onClick={() => setAutoplay(!autoplay)} className="text-white">Change autoplay</button>
+        <button onClick={() => setAutoplay(!autoplay)} className="text-white p-4">Change autoplay</button>
+        <button onClick={() => setLayout( layout === "uniform" ? "waterfall" : "uniform")} className="p-4 text-white">Change layout</button>
         <div
-          className="dense-grid gallery relative overflow-hidden"
+          className={`${layout === "uniform" ? "flex-container" : "dense-grid" } gallery relative overflow-hidden`}
           id="posts-container"
         >{posts}</div>
       </>

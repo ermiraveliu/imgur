@@ -19,6 +19,7 @@ const Gallery: React.FC<GalleryProps> = () => {
     setDownvoteBannerDisplay, 
     setFavoriteBannerDisplay
   } = useContext(PostContext);
+  
    const handleClick = (e:React.MouseEvent<HTMLElement>) => {
     setUpvoteBannerDisplay("hidden");
     setDownvoteBannerDisplay("hidden");

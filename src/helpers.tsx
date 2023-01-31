@@ -43,5 +43,5 @@ export const imageCalculations = (post: IPost|IExpandedPost) => {
       aspectRatio = post.height / post.width;
     }
     let objectFit = aspectRatio < 1 ? "object-fill" : "object-cover";
-    return [imageId, animated, height, width, objectFit, imageHeight, titleLength, postHeight ]
+    return [imageId, animated, objectFit, imageHeight, titleLength, postHeight ]
 }
