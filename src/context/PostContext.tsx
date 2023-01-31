@@ -29,7 +29,7 @@ interface PostContextProviderProps {
     children: React.ReactNode
 }
  
-export const PostContextProvider: React.FC<PostContextProviderProps> = ({children}) => {
+const PostContextProvider: React.FC<PostContextProviderProps> = ({children}) => {
     const [post, setPost] = useState<IExpandedPost|IPost>(IPostDefault);
     const [upvoteBannerDisplay, setUpvoteBannerDisplay] = useState<string>("hidden");
     const [downvoteBannerDisplay, setDownvoteBannerDisplay] = useState<string>("hidden");

@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Post from "../components/Post";
+import { AutoplayContext } from "../context/AutoplayContext";
 import { IExpandedPost } from "../interfaces/IExpandedPost";
 import IPost from "../interfaces/IPost";
 interface PostsProps {
@@ -7,9 +8,10 @@ interface PostsProps {
 }
 
 const Posts: React.FC<PostsProps> = ({apiEndpoint}) => {
-
+  
   const [postsData, setPostsData] = useState<(IPost|IExpandedPost)[]>();
   const [posts, setPosts] = useState<JSX.Element[]>();
+  const {autoplay, setAutoplay} = useContext(AutoplayContext);
 
   useEffect(() => {   
      fetch(apiEndpoint)
@@ -26,13 +28,16 @@ const Posts: React.FC<PostsProps> = ({apiEndpoint}) => {
         <Post key={data.id} post = {data}/>);
          setPosts(Posts);
         } 
-    }, [postsData])
-    
+    }, [postsData, autoplay])
+
     return ( 
+      <>
+        <button onClick={() => setAutoplay(!autoplay)} className="text-white">Change autoplay</button>
         <div
           className="dense-grid gallery relative overflow-hidden"
           id="posts-container"
         >{posts}</div>
+      </>
     );
 }
  
