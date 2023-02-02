@@ -1,3 +1,5 @@
+import Header from "../components/Header/Header";
+
 interface LayoutProps {
     children:React.ReactNode;
 }
@@ -5,6 +7,7 @@ interface LayoutProps {
 const Layout: React.FC<LayoutProps> = ({children}) => {
     return ( 
         <div className="bg-gray-900" id="top">
+        <Header/>
         {children}
         <footer></footer>
         </div>
