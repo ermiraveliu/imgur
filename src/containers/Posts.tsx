@@ -27,14 +27,16 @@ const Posts: React.FC<PostsProps> = ({apiEndpoint}) => {
     },[apiEndpoint])
 
     return ( 
-      <>
-        <button onClick={() => setAutoplay(!autoplay)} className="text-white p-4">Change autoplay</button>
-        <button onClick={() => setLayout( layout === "uniform" ? "waterfall" : "uniform")} className="p-4 text-white">Change layout</button>
+      <div className="relative top-64">
+        <nav className="w-full px-32 flex justify-end">
+          <button onClick={() => setAutoplay(!autoplay)} className="text-white p-4">Change autoplay</button>
+          <button onClick={() => setLayout( layout === "uniform" ? "waterfall" : "uniform")} className="p-4 text-white">Change layout</button>
+        </nav>
         <div
           className={`${layout === "uniform" ? "flex-container" : "dense-grid" } gallery relative overflow-hidden`}
           id="posts-container"
         >{posts}</div>
-      </>
+      </div>
     );
 }
  
