@@ -1,3 +1,5 @@
+import ITag from "./ITag";
+
 export interface IExpandedPost {
     id: string;
     title: string;
@@ -17,6 +19,7 @@ export interface IExpandedPost {
     width: number;
     height: number;
     size: number;
+    tags: ITag[],
   }
   
    export const IPostDefault:IExpandedPost = {
@@ -37,5 +40,6 @@ export interface IExpandedPost {
      animated: false,
      width: 0,
      height: 0,
-     size: 0,   
+     size: 0,  
+     tags: [] 
     }

@@ -27,7 +27,7 @@ const Posts: React.FC<PostsProps> = ({apiEndpoint}) => {
     },[apiEndpoint])
 
     return ( 
-      <div className="relative top-64">
+      <div className="">
         <nav className="w-full px-32 flex justify-end">
           <button onClick={() => setAutoplay(!autoplay)} className="text-white p-4">Change autoplay</button>
           <button onClick={() => setLayout( layout === "uniform" ? "waterfall" : "uniform")} className="p-4 text-white">Change layout</button>
