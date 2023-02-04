@@ -14,14 +14,6 @@ const CommentsSkeleton: React.FC<CommentsSkeletonProps> = () => {
             <button className="bg-btnColor-1 px-2 py-1 rounded-md tracking-wider"><a href="./signUp.html">Sign up</a></button>
           </div>
         </div> 
-        
-        {/* <div  className="flex flex-col justify-between items-center border border-gray-500 rounded w-full mt-4 mb-12 text-gray-100 hidden"  id="leave-a-comment">
-           <textarea className="bg-gray-700 w-full resize-none p-2  outline-none text-sm  placeholder-gray-100"  placeholder="Write a comment"></textarea>
-           <div className="flex justify-between items-center w-full p-2 text-xs">
-            <a href="https://imgur.com/rules" className=" hover:text-btnColor-1">Read community rules</a>
-            <button className="py-1 px-4 bg-gray-700 rounded font-semibold" id="post-comment" disabled>Post</button>
-           </div>
-        </div> */}
 
          <div className="comments hidden sm:block">
             <div className="flex justify-between">

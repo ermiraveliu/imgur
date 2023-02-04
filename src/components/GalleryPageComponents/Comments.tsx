@@ -8,7 +8,6 @@ interface CommentsProps {
  
 const Comments: React.FC<CommentsProps> = () => {
     const [comments, setComments] = useState<IComment[]>([] as IComment[])
-    // const {post} = useContext(PostContext);
      const endpoints = [
       {
       postId: "6rXPASw",
@@ -27,17 +26,13 @@ const Comments: React.FC<CommentsProps> = () => {
    let postId = post.id
    let en:string = "" ;
    endpoints.forEach(endpoint => { 
-      if(endpoint.postId === postId){
-         en = endpoint.api
-      }
+      if(endpoint.postId === postId) en = endpoint.api
       }
    )
 
    useEffect(()=> {
        const getComments = async () => {
-console.log(en, "fdghjkljvcgfhjioigcfvhjpigcb vhjiphvcg");
         const res = await fetch(en);
-        
         const resJson = await res.json();
         console.log(resJson);
         setComments(resJson)

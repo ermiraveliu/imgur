@@ -33,7 +33,7 @@ const Comment: React.FC<CommentProps> = ({comment}) => {
     let temp = url.split(".");
     let imageHtml;
     const extension = temp[temp.length - 1];
-    if (extension == "mp4") {
+    if (extension === "mp4") {
       imageHtml = 
         (<video className="rounded h-[120px] mr-3" autoPlay loop muted>
         <source src={url} type="video/mp4"/>

@@ -3,13 +3,6 @@ import ITag from "../../interfaces/ITag";
 interface TagProps {
     tag: ITag
 }
-
-const mystyle = {
-    color: "white",
-    backgroundColor: "DodgerBlue",
-    padding: "10px",
-    fontFamily: "Arial"
-  };
  
 const Tag: React.FC<TagProps> = ({tag}) => {
     return ( 

@@ -1,5 +1,4 @@
 import React, { createContext, useState } from "react";
-import Layout from "../containers/Layout";
 
 interface LayoutContextProps {
     layout : "waterfall" | "uniform",

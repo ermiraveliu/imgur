@@ -13,10 +13,7 @@ import CommentsSkeleton from "./CommentsSkeleton";
 import IPost from "../../../interfaces/IPost";
 import Tags from "../Tags";
 
-interface ContentContainerProps {
-}
- 
-const ContentContainer: React.FC<ContentContainerProps> = () => {
+const ContentContainer: React.FC<{}> = () => {
 
     const [isLoading, setIsLoading] = useState<boolean>();
     const [prevId, setPrevId] = useState<string>("");
@@ -42,25 +39,16 @@ const ContentContainer: React.FC<ContentContainerProps> = () => {
         }
   
         setPost(post);
-        if(nextId){
-          setNextId(nextId);
-        } 
-        if(prevId){
-          setPrevId(prevId);
-        }
+        if(nextId) setNextId(nextId);
+        if(prevId) setPrevId(prevId);
         setIsLoading(false);
       };
 
     let { id } = useParams(); 
-
-    useEffect(()=> {
-        if(id){
-            getPostById(id);
-        }
-    },[id]) 
+    useEffect(()=> { if(id)  getPostById(id);},[id]) 
 
     const skeleton = (
-        <>
+        <div className="w-full flex justify-center h-full">
           <EngagementBarSkeleton/>
           <div className="mx-0 px-0 w-full sm:mx-6 sm:px-6 md:ml-4">
             <TitleSkeleton />
@@ -69,11 +57,11 @@ const ContentContainer: React.FC<ContentContainerProps> = () => {
             </div>
             <CommentsSkeleton/>
           </div>
-         </>
+         </div>
     )
 
     const content = (
-        <>
+        <div className="w-full flex justify-center h-full">
           <EngagementBar/>
           <div className="mx-0 px-0 w-full sm:mx-6 sm:px-6 md:ml-4">
             <Title prevPostId={prevId} nextPostId={nextId}/>
@@ -81,17 +69,11 @@ const ContentContainer: React.FC<ContentContainerProps> = () => {
             <Tags></Tags>
             <Comments/>
           </div>
-        </>
+        </div>
     )
 
-    const element = isLoading ? skeleton : content;
-
-
-    return (
-        <div className="w-full flex justify-center h-full">
-            {element}
-        </div>
-    );
+    if(isLoading) return ( skeleton );
+    return ( content )
 }
  
 export default ContentContainer;

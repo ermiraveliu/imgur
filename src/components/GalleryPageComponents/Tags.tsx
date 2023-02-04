@@ -10,7 +10,6 @@ const Tags: React.FC<TagsProps> = () => {
     const {post} = useContext(PostContext);
     const tags:(ITag[]) = post.tags;
     let allTags;
-    // console.log(post.tags)
     if(tags.length > 0) {
         allTags = tags.map(tag => {
            return  <Tag tag= {tag}/>
