@@ -27,7 +27,7 @@ const Gallery: React.FC<GalleryProps> = () => {
    }
     return ( 
        <div onClickCapture= {handleClick}>
-          <Layout>
+          <Layout backgroundColor="bgGradientColor">
             <GradientBackground/>
             <MobileTitle/>
             <div

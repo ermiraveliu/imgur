@@ -7,7 +7,7 @@ interface HomeProps {
  
 const Home: React.FC<HomeProps> = () => {
     return (
-        <Layout>
+        <Layout backgroundColor="">
             <TagContainer/>
             <Posts apiEndpoint="https://api.npoint.io/bc13239283496e6574a7"/>
         </Layout>

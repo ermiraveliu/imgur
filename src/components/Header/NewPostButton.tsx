@@ -12,7 +12,7 @@ const NewPostButton: React.FC<Props> = () => {
             src="https://s.imgur.com/desktop-assets/desktop-assets/icon-new-post.13ab64f9f36ad8f25ae3544b350e2ae1.svg"
                 className="lg:relative "
         />
-        <p className="inline-block sm:hidden md:inline-block text-sm font-semibold mb-1">New post</p>
+        <p className="inline-block sm:hidden md:inline-block text-sm font-semibold">New post</p>
         </button>
     );
 }

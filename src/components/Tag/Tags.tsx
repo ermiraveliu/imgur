@@ -17,7 +17,7 @@ const Tags: React.FC<TagsProps> = () => {
         const data: ITag[] = json.data.tags;
             const tags = data.map(tag => {
                 return (
-                    <Tag key={tag.id} id={tag.id} name={tag.name} total_items={tag.total_items} display_name={tag.display_name} background_hash={tag.background_hash} />
+                        <Tag key={tag.id} id={tag.id} name={tag.name} total_items={tag.total_items} display_name={tag.display_name} background_hash={tag.background_hash} />
             )
         })
         setTags(tags)
@@ -27,7 +27,7 @@ const Tags: React.FC<TagsProps> = () => {
     }, [])
 
     return (
-        <div className="flex flex-wrap justify-between gap-y-4 overflow-hidden py-8">
+        <div className="flex flex-wrap justify-between gap-y-4 overflow-hidden py-4 h-[176px]">
             {tags}
         </div>
     )
