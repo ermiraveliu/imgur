@@ -1,10 +1,8 @@
-import Posts from "../../containers/Posts";
+import Posts from "./Posts";
 
 interface ExplorePostsProps {
     
 }
- 
-     {/* style=" text-shadow: 0 1px 4px #000;" */}
 
 const ExplorePosts: React.FC<ExplorePostsProps> = () => {
     return ( 

@@ -50,7 +50,7 @@ const Title: React.FC<TitleProps> = ({ prevPostId, nextPostId}) => {
           <NextButton prevPostId={prevPostId} nextPostId={nextPostId}/>
         </div>
           <div className="flex gap-2 w-full mb-5">
-              <Avatar/>
+              <Avatar username={post.account_url}/>
             <div className=" flex justify-between w-full items-center">
                 <div>
                     <div className="text-btnColor-1 account_name text-xs tracking-wide font-semibold">

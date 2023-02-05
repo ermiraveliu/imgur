@@ -1,9 +1,14 @@
-interface CommentsSkeletonProps {
+import { useContext } from "react";
+import { PostContext } from "../../context/PostContext";
+import Comments from "./Comments";
+
+interface CommentsContainerProps {
     
 }
  
-const CommentsSkeleton: React.FC<CommentsSkeletonProps> = () => {
+const CommentsContainer: React.FC<CommentsContainerProps> = () => {
 
+  const {post} = useContext(PostContext);
     return ( 
         <>
          <div 
@@ -14,16 +19,22 @@ const CommentsSkeleton: React.FC<CommentsSkeletonProps> = () => {
             <button className="bg-btnColor-1 px-2 py-1 rounded-md tracking-wider"><a href="./signUp.html">Sign up</a></button>
           </div>
         </div> 
+        
+        <div  className="flex flex-col justify-between items-center border border-gray-500 rounded w-full mt-4 mb-12 text-gray-100 hidden"  id="leave-a-comment">
+           <textarea className="bg-gray-700 w-full resize-none p-2  outline-none text-sm  placeholder-gray-100"  placeholder="Write a comment"></textarea>
+           <div className="flex justify-between items-center w-full p-2 text-xs">
+            <a href="https://imgur.com/rules" className=" hover:text-btnColor-1">Read community rules</a>
+            <button className="py-1 px-4 bg-gray-700 rounded font-semibold" id="post-comment" disabled>Post</button>
+           </div>
+        </div>
+
 
          <div className="comments hidden sm:block">
             <div className="flex justify-between">
             <div className="text-white flex gap-2 text-base font-medium uppercase">
-              <div className="comment-count" >
-                <div className="w-8 h-3 bg-[rgba(0,0,0,.1)] animate-pulse"></div>
+              <div className="comment-count" >{post.comment_count}
               </div>
               comments</div>
-
- 
               <div className="flex gap-3 font-medium" >
                 <div className="flex gap-1 cursor-pointer text-gray-100 hover:text-white expandAll" ><span>Expand All</span><img src="../assets/expand.svg" alt=""/></div>
                 <div className="gap-1 cursor-pointer text-gray-100 hover:text-white hidden" id="collapse-all"><span>Collapse All</span><img src="../assets/collapse.svg" alt=""/></div>
@@ -37,6 +48,7 @@ const CommentsSkeleton: React.FC<CommentsSkeletonProps> = () => {
 
 
            <div id="comments">
+            <Comments/>
            </div>
 
           {/* <!-- Load more comments button --> */}
@@ -52,4 +64,4 @@ const CommentsSkeleton: React.FC<CommentsSkeletonProps> = () => {
      );
 }
  
-export default CommentsSkeleton;
+export default CommentsContainer;

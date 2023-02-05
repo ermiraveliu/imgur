@@ -1,13 +1,9 @@
-import { useContext } from "react";
-import { PostContext } from "../../context/PostContext";
-
 interface AvatarProps {
-    
+    username: string 
 }
  
-const Avatar: React.FC<AvatarProps> = () => {
-  const {post} = useContext(PostContext);
-  const firstLetter =  post.account_url.toUpperCase().charCodeAt(0) - 65;
+const Avatar: React.FC<AvatarProps> = ({username}) => {
+  const firstLetter =  username.toUpperCase().charCodeAt(0) - 65;
 
     return ( 
         <img src={avatarImages[firstLetter]} className="img w-8 h-8 rounded-full hover:scale-110" alt=""/>
