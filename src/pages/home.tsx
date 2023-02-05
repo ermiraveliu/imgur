@@ -9,7 +9,6 @@ interface HomeProps {
 const Home: React.FC<HomeProps> = () => {
 
     const [inGalleryPage, setInGalleryPage] = useState<boolean>(false)
-s
     return (
             <Layout backgroundColor="" inGalleryPage={ inGalleryPage }>
                 <TagContainer/>
