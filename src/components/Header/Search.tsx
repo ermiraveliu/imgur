@@ -1,13 +1,18 @@
+import { useContext } from "react";
+import { PageContext } from "../../context/PageContext";
+
 interface Props {
-  inGalleryPage:boolean,
-  isVisible:boolean
 }
  
-const Search: React.FC<Props> = ({isVisible, inGalleryPage}) => {
+const Search: React.FC<Props> = () => {
+  const {page, setPage} = useContext<any>(PageContext)
+  const {isVisible, setIsVisible} = useContext<any>(PageContext)
+
+  
     return ( 
       <form className="search-form flex-col h-10 overflow-visible items-center sm:w-5/6 md:w-1/3 relative z-10"
         style={{
-          display: isVisible && inGalleryPage ? `none` : `flex`
+          display: isVisible && page==='gallery' ? `none` : `flex`
         }}>
         <div className="flex h-10 items-center w-full relative z-10">
           <input

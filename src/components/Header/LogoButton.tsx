@@ -1,8 +1,12 @@
+import { useContext } from "react";
+import { PageContext } from "../../context/PageContext";
+
 interface Props {
-  isVisible: boolean,
 }
  
-const LogoButton: React.FC<Props> = ({ isVisible }) => {
+const LogoButton: React.FC<Props> = () => {
+  const {isVisible, setIsVisible} = useContext<any>(PageContext)
+
     return ( 
         <a href={"/"} className="logoImg absolute" style={{visibility: isVisible?'visible': 'hidden'}}>
         <img

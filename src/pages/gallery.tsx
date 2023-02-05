@@ -6,30 +6,31 @@ import ExplorePosts from "../components/GalleryPageComponents/ExplorePosts";
 import MobileEngagementBar from "../components/GalleryPageComponents/MobileEngagementBar";
 import LoadAllComments from "../components/GalleryPageComponents/LoadAllComments";
 import ContentContainer from "../components/GalleryPageComponents/Skeletons/ContentContainer";
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { PostContext } from "../context/PostContext";
+import { PageContext } from "../context/PageContext";
 
 interface GalleryProps {    
 }
  
 const Gallery: React.FC<GalleryProps> = () => {
 
-   const {
-    setUpvoteBannerDisplay, 
-    setDownvoteBannerDisplay, 
+  const {
+    setUpvoteBannerDisplay,
+    setDownvoteBannerDisplay,
     setFavoriteBannerDisplay
   } = useContext(PostContext);
   
-   const handleClick = (e:React.MouseEvent<HTMLElement>) => {
+  const handleClick = (e: React.MouseEvent<HTMLElement>) => {
     setUpvoteBannerDisplay("hidden");
     setDownvoteBannerDisplay("hidden");
     setFavoriteBannerDisplay("hidden");
   }
-  const [inGalleryPage, setInGalleryPage] = useState<boolean>(true)
-  // console.log(inGalleryPage)
+  const {setPage} = useContext<any>(PageContext);
+    setPage('gallery')
     return ( 
        <div onClickCapture= {handleClick}>
-          <Layout backgroundColor="bgGradientColor" inGalleryPage = { inGalleryPage}>
+          <Layout backgroundColor="bgGradientColor">
             <GradientBackground/>
             <MobileTitle/>
             <div

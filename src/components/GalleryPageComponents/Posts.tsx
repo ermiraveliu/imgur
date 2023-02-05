@@ -8,7 +8,7 @@ interface PostsProps {
   apiEndpoint: string
 }
 
-const Posts: React.FC<PostsProps> = ({apiEndpoint}) => {
+  const Posts: React.FC<PostsProps> = ({apiEndpoint}) => {
   
   const [posts, setPosts] = useState<JSX.Element[]>();
   const [isLoading, setIsLoding] = useState<boolean>(true);
@@ -44,9 +44,22 @@ const Posts: React.FC<PostsProps> = ({apiEndpoint}) => {
     }
     return ( 
         <div className="">
-        <nav className="w-full px-32 flex justify-end">
-          <button onClick={() => setAutoplay(!autoplay)} className="text-white p-4">Change autoplay</button>
-          <button onClick={() => setLayout( layout === "uniform" ? "waterfall" : "uniform")} className="p-4 text-white">Change layout</button>
+        <nav className="flex justify-end px-2 w-10/12 m-auto py-4 sticky top-2 z-20">
+          <div className="w-auto flex gap-2 items-center">
+            <button onClick={() => setAutoplay(!autoplay)} className="text-white">
+              <span
+                className="play material-symbols-rounded text-gray-200 hover:text-white text-2xl hidden relative"
+                id="enable-autoplay-btn"
+              >
+                smart_display
+              </span>
+            </button>
+            <button onClick={() => setLayout(layout === "uniform" ? "waterfall" : "uniform")} className=" text-white">
+              <span className="uniform material-symbols-rounded text-gray-200 hover:text-white text-2xl relative">
+                    grid_view
+              </span>
+              </button>
+          </div>
         </nav>
         <div
           className={`${layout === "uniform" ? "flex-container" : "dense-grid" } gallery relative overflow-hidden`}

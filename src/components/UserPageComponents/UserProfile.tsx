@@ -18,7 +18,7 @@ const Profile: React.FC<ProfileProps> = () => {
     return ( 
         <>
             <section
-                className="header-container bg-bgColor flex flex-col justify-center items-center gap-y-5 h-auto pb-5 absolute top-0 w-full py-8"
+                className="header-container bg-bgColor flex flex-col justify-center items-center gap-y-5 h-auto pb-20 absolute top-0 w-full py-8"
                 >
                 
                 <section className="user py-10">
