@@ -1,13 +1,37 @@
 import styles from "./Footer.module.css"
+import { useEffect, useState, useRef } from "react";
 interface Props {
     
 }
  
 const ScrollButton: React.FC<Props> = () => {
+
+      const button = useRef<any>(null)
+      const [scrollDown, setScrollDown] = useState<boolean>(false)
+
+      useEffect(() => {
+        const handleScroll = () => {
+          const scrollPosition =
+        document.body.scrollTop || document.documentElement.scrollTop;
+          if (scrollPosition > 0) {
+            setScrollDown(true);
+          } else {
+            setScrollDown(false);
+          }
+        };
+        window.addEventListener("scroll", handleScroll);
+        return () => {
+          window.removeEventListener("scroll", handleScroll);
+        };
+    }, [button]);
+
+
     return ( 
-        <div className="sm:block" onClick={() => {
+        <div ref={button} className="sm:block" onClick={() => {
             window.scrollTo(0,0)
-        }}>
+      }} style={{
+        transform: !scrollDown ? `translate3d(0, 60px, 0)` : undefined,
+      }}>
         <button id={styles.scroll_btn} className={`${styles.scroll_btn} z-10`}>
             <svg
             fill="#ffffff"

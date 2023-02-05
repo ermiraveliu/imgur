@@ -7,12 +7,14 @@ import Header from "../components/Header/Header";
 interface LayoutProps {
     children: React.ReactNode;
     backgroundColor: string;
+    inGalleryPage: boolean
 }
  
-const Layout: React.FC<LayoutProps> = ({ children, backgroundColor}) => {
+const Layout: React.FC<LayoutProps> = ({ children, backgroundColor, inGalleryPage }) => {
+    // console.log(inGalleryPage)
     return ( 
         <div className="bg-gray-900" id="top">
-            <Header backgroundColor={backgroundColor} />    
+            <Header backgroundColor={backgroundColor} inGalleryPage={ inGalleryPage } />    
             {children}
             <Footer />
             <ScrollButton/>

@@ -29,7 +29,7 @@ const Posts: React.FC<PostsProps> = ({apiEndpoint}) => {
 
     return ( 
       <div className="relative top-[268px]">
-        <nav className="flex justify-end px-36 w-full py-4 sticky top-0 z-20">
+        <nav className="flex justify-end px-2 w-10/12 m-auto py-4 sticky top-2 z-20">
           <div className="w-auto flex gap-2 items-center">
             <button onClick={() => setAutoplay(!autoplay)} className="">
               <span

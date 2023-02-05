@@ -1,16 +1,16 @@
 import Tags from "../components/Tag/Tags";
 import Buttons from "../components/Tag/Buttons";
-import { useState, useLayoutEffect } from "react";
+import { useState, useEffect } from "react";
 
 interface Props {
     
 }
  
 const TagContainer: React.FC<Props> = () => {
-  
 
-    const [scrollTop, setScrollTop] = useState(0);
-    useLayoutEffect(() => {
+  const [scrollTop, setScrollTop] = useState(0);
+  
+    useEffect(() => {
         const handleScroll = () => {
             setScrollTop(window.scrollY);
         };

@@ -6,7 +6,7 @@ import ExplorePosts from "../components/GalleryPageComponents/ExplorePosts";
 import MobileEngagementBar from "../components/GalleryPageComponents/MobileEngagementBar";
 import LoadAllComments from "../components/GalleryPageComponents/LoadAllComments";
 import ContentContainer from "../components/GalleryPageComponents/Skeletons/ContentContainer";
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { PostContext } from "../context/PostContext";
 
 interface GalleryProps {    
@@ -24,10 +24,12 @@ const Gallery: React.FC<GalleryProps> = () => {
     setUpvoteBannerDisplay("hidden");
     setDownvoteBannerDisplay("hidden");
     setFavoriteBannerDisplay("hidden");
-   }
+  }
+  const [inGalleryPage, setInGalleryPage] = useState<boolean>(true)
+  // console.log(inGalleryPage)
     return ( 
        <div onClickCapture= {handleClick}>
-          <Layout backgroundColor="bgGradientColor">
+          <Layout backgroundColor="bgGradientColor" inGalleryPage = { inGalleryPage}>
             <GradientBackground/>
             <MobileTitle/>
             <div
